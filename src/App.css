@@ -1,3 +1,28 @@
 body{
-    background-color: white;
+    /* overflow-y: scroll; */
+    background-color: #0f1519;
+    color: #FFE;
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 1.3125em;
+    font-family: 'Colfax',Helvetica,sans-serif;
+    font-size: 1.6rem;
+}
+
+.container{
+    margin: 0;
+    padding: 0;
+}
+
+.filter{
+    padding: 5%;
+}
+
+.content {
+    margin-left: 240px;
+    padding: 5%;
+}
+
+.with-out{
+    margin-left: 0px;
 }

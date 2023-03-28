@@ -1,27 +1,46 @@
 import React from 'react'
-import './Navbar.css'
 import {Link} from 'react-router-dom'
+import './Navbar.css'
 
-const Navbar = () => {
+const Navbarfun = () => {
+  var logo = require('../../assets/image.png');
+
   return (
-    <div className='nav'>
-        <Link to='/' className='title'>
-            LOLStier
+    <nav className='navbar navbar-expand-lg navbar-dark '>
+        <Link to='/' className='navbar-brand'>
+            <img src={logo} width="90" height="27" className="d-inline-block align-top" alt="" />
+            {/* LOLStier */}
         </Link>
-        <ul>
-            <li>
-                <Link to='/Champs'>
-                    Champs
-                </Link>
-            </li>
-            <li>
-                <Link to='/Teams'>
-                    Teams
-                </Link>
-            </li>
-        </ul>
-    </div>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarText">
+          <ul className="navbar-nav  mr-auto">
+              <li className="nav-item active">
+                  <Link className="nav-link" to='/schedule'>
+                      Schedule
+                  </Link>
+              </li>
+              <li className="nav-item">
+                  <Link className="nav-link" to='/standings'>
+                      Standing
+                  </Link>
+              </li>
+              <li className="nav-item">
+                  <Link className="nav-link" to='/rewards'>
+                      Rewards
+                  </Link>
+              </li>
+          </ul>
+          <span className="navbar-text">
+            <Link to='/login' >
+                <button className="btn btn-outline-info " type="button">Login</button>
+            </Link>
+          </span>
+        </div>
+    </nav>
+
   );
 }
 
-export default Navbar
+export default Navbarfun
