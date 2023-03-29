@@ -21,3 +21,8 @@ a img{
     justify-content: space-between;
     margin-right: 1%;
 }
+
+#navbarNav{
+    background-color: #111;
+    z-index: 1300;
+}
