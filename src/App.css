@@ -10,7 +10,7 @@ body{
 }
 
 .container{
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
 }
 
@@ -19,10 +19,11 @@ body{
 }
 
 .content {
-    margin-left: 240px;
+    width: 70vw;
+    margin-left: 30vw;  
     padding: 5%;
 }
 
 .with-out{
-    margin-left: 0px;
+    margin-left: 0;
 }

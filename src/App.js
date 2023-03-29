@@ -12,17 +12,15 @@ import Login from "./Components/Login";
 const App = () => {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <div className="container ">
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/schedule" element={<Schedule />}></Route>
-            <Route path="/standings" element={<Standing />}></Route>
-            <Route path="/rewards" element={<Rewards />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/schedule" element={<Schedule />}></Route>
+          <Route path="/standings" element={<Standing />}></Route>
+          <Route path="/rewards" element={<Rewards />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
       </div>
     </>
   );

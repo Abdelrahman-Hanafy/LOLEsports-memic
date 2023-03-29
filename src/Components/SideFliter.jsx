@@ -8,7 +8,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-const drawerWidth = 240;
+const drawerWidth = '30vw';
 const SideFliter = () => {
     var arbian = require('../assets/Arabian.png');
     var emea = require('../assets/emea.png');
@@ -26,7 +26,7 @@ const SideFliter = () => {
             width: drawerWidth,
             boxSizing: 'border-box',
             top: 'auto',
-            left:'auto',
+            // left:'auto',
             backgroundColor: '#0a0e13',
             color: '#00c8c8'
             },
