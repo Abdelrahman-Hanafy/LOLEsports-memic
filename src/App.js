@@ -9,6 +9,7 @@ import Standing from "./Components/Standing";
 import Rewards from "./Components/Rewards";
 import Login from "./Components/Login";
 import Loading from "./Components/Loading";
+// import Footer from "./Components/Footer";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/login" element={<Login />}></Route>
             </Routes>
           </div>
+          {/* <Footer /> */}
         </>
       )}
     </>
