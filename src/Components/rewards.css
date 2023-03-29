@@ -1,0 +1,37 @@
+.RewardsStartEarning {
+    display: flex;
+    flex-direction: column-reverse;
+    /* flex-direction: row; */
+    flex-grow: 1;
+    align-items: center;
+
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.text .title {
+    font-weight: bold;
+    padding-bottom: 11px;
+    line-height: 1em;
+}
+
+.RewardsStartEarning .text .body {
+    font-size: 1.6rem;
+    line-height: 1.5em;
+}
+
+.RewardsStartEarning .image img {
+    max-width: 100%;
+}
+
+/* @media (max-width: 720px)
+{
+    .RewardsStartEarning .image {
+        align-self: flex-end;
+    }
+} */
