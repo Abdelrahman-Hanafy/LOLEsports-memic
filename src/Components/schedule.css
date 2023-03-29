@@ -1,0 +1,132 @@
+.EventDate .date {
+    margin: 0 34px;
+    padding: 48px 0 15px 0;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+.EventDate .date .weekday {
+    font-weight: bold;
+}
+
+.EventMatch .event.future{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 70vw;
+    /* height: 100px; */
+    margin: 0 34px;
+}
+
+.EventMatch .event.future:before{
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    content: '';
+    display: block;
+    background: #252c32;
+}
+
+.EventTime {
+    display: inline-block;
+    flex: 0 0 110px;
+}
+
+.EventTime .time {
+    position: relative;
+    font-size: 4rem;
+    line-height: 1em;
+    opacity: 0;
+    font-weight: bold;
+    transition: opacity .25s ease-out;
+}
+.EventTime .time {
+    opacity: 1;
+}
+.EventTime .time .minute, .EventTime .time .ampm {
+    position: relative;
+    padding-left: 4px;
+    top: -18px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 0;
+}
+
+.EventTime .time .approx {
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 4px;
+    font-size: 1.2rem;
+    line-height: 1em;
+}
+
+.EventMatch .teams {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+.EventMatch .teams .team1 {
+    text-align: right;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    display: flex;
+    align-items: center;
+
+}
+
+.EventMatch .versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.EventMatch .teams .team2 {
+    text-align: left;
+    justify-content: flex-start;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.EventMatch .teams .team1 .team-info{
+    padding-right: 20%; 
+}
+
+
+.EventMatch .teams .team2 .team-info{
+    padding-left: 20%; 
+}
+
+.EventMatch .league {
+    flex: 0 0 110px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.EventMatch .teams img {
+    width: 70px;
+    height: 70px;
+    margin: 16px 0;
+    box-sizing: content-box;
+}
