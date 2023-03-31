@@ -42,7 +42,7 @@ const SideFliter = () => {
         } } />
         <List>
             {['LEC', 'LCK', 'EMEA Master', 'Arabian League'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={text} id={text} disablePadding>
                 <ListItemButton>
                 <ListItemIcon>
                     <img src={logos[index]} width="45" height="45" alt=''/>

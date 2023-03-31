@@ -1,0 +1,79 @@
+#LEC::after{
+    content: '';
+    background: #00c8c8;
+
+}
+
+.ranking{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ordinal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.6rem;
+    font-weight: bold;
+    padding-right: 34px;
+}
+
+.team {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.ranking::before{
+    content: '';
+    display: block;
+    right: 0;
+    width: 100%;
+    top: -10px;
+    position: absolute;
+    border-bottom: 1px solid #292d31;
+}
+
+.ranking::after{
+    content: '';
+    display: block;
+    right: 0;
+    width: 100%;
+    top: calc(100% + 10px);
+    position: absolute;
+    border-bottom: 1px solid #292d31;
+}
+
+.team-logo {
+    display: flex;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.team-logo .logo {
+    /* width: 70px; */
+    height: 70px;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.record {
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.title {
+    margin: 34px 34px 18px 0px;
+}
