@@ -9,6 +9,7 @@
 .home-content {
     display: flex;
     flex-direction: row;
+    width: fit-content;
 }
 
 .content-list {
@@ -103,4 +104,13 @@ a:hover{
     letter-spacing: 1px;
     text-shadow: 1px 1px 0 #000;
     z-index: 2;
+}
+
+@media screen and (max-width: 720px) {
+    .content-list{
+        width: 75%;
+    }
+    .home-content{
+        flex-direction: column;
+    }
 }

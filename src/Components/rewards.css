@@ -1,7 +1,7 @@
+
 .RewardsStartEarning {
     display: flex;
-    flex-direction: column-reverse;
-    /* flex-direction: row; */
+    flex-direction: row;
     flex-grow: 1;
     align-items: center;
 
@@ -9,6 +9,7 @@
 
 .text {
     display: flex;
+    width: 40%;
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -17,11 +18,12 @@
 .text .title {
     font-weight: bold;
     padding-bottom: 11px;
-    line-height: 1em;
+    line-height: 1.2em;
+    font-size: 3em;
 }
 
 .RewardsStartEarning .text .body {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     line-height: 1.5em;
 }
 
@@ -29,9 +31,18 @@
     max-width: 100%;
 }
 
-/* @media (max-width: 720px)
-{
-    .RewardsStartEarning .image {
-        align-self: flex-end;
+@media screen and (max-width: 720px) {
+    .RewardsStartEarning {
+        flex-direction: column-reverse;
     }
-} */
+    .text .title {
+        font-weight: bold;
+        padding-bottom: 11px;
+        line-height: 1em;
+        font-size: 1.6em;
+    }
+    .text{
+    width: 65%;
+
+    }
+}

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./app.css";
-import Home from "./Components/Home";
 
+import Loading from "./Components/Loading";
 import Navbar from "./Components/Navbar/Navbar";
+// import Footer from "./Components/Footer";
+
+import Home from "./Components/Home";
 import Schedule from "./Components/Schedule";
 import Standing from "./Components/Standing";
 import Rewards from "./Components/Rewards";
 import Login from "./Components/Login";
-import Loading from "./Components/Loading";
-// import Footer from "./Components/Footer";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
