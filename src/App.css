@@ -49,3 +49,36 @@ body{
 .with-out{
     margin-left: 0;
 }
+
+.MuiDrawer-paper{
+    width: 20vw;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    height:100vh;
+    background-color: #0a0e13;
+    color: #00c8c8;
+    }
+
+.side-list{
+    /* text-decoration: none; */
+    padding: 0;
+    list-style: none;
+}
+
+@media screen and (max-width: 720px) {
+    .MuiDrawer-paper{
+        width: 100vw;
+        height: 7vh;
+    }
+    .container{
+        display: flex;
+        flex-flow: column;
+    }
+    .content{
+        margin: 0;
+    }
+    .side-list{
+        visibility: hidden;
+    }
+}

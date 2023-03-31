@@ -16,45 +16,22 @@ const SideFliter = () => {
     var lck = require('../assets/lck.png');
 
     let logos = [lec,lck,emea,arbian]
-  return (
-
-    <Box >
-    <Drawer
-        sx={{
-
-            '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            position: 'relative',
-            float: 'left',
-            height: '100vh',
-            backgroundColor: '#0a0e13',
-            color: '#00c8c8'
-            },
-        }}
-        variant="permanent"
-        anchor="left"
-    >
+  return ( 
+    <div className='MuiDrawer-paper' >
         <div className='filter'>FILTER</div>
-        <Divider style={{
-            borderColor: '#00c8c8',
-            // borderBottomWidth: 'medium'
-        } } />
-        <List>
+        <ul className='side-list'>
             {['LEC', 'LCK', 'EMEA Master', 'Arabian League'].map((text, index) => (
-            <ListItem key={text} id={text} disablePadding>
+            <li key={text} id={text} >
                 <ListItemButton>
                 <ListItemIcon>
                     <img src={logos[index]} width="45" height="45" alt=''/>
                 </ListItemIcon>
                 <ListItemText primary={text} />
                 </ListItemButton>
-            </ListItem>
+            </li>
             ))}
-        </List>
-    </Drawer>
-    
-    </Box>
+        </ul>
+    </div>
   )
 }
 

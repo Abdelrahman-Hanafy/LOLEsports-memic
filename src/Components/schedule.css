@@ -130,3 +130,15 @@
     margin: 16px 0;
     box-sizing: content-box;
 }
+
+@media screen and (max-width: 720px) {
+    .EventMatch .event.future{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .EventMatch .league {
+        text-align: left;
+    }
+    
+}
