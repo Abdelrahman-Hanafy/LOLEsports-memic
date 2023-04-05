@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import './Navbar.css'
+import './Style/Navbar.css'
 
 const Navbarfun = () => {
-  var logo = require('../../assets/image.png');
+  var logo = require('../assets/image.png');
 
   return (
     <nav className='navbar navbar-expand-lg navbar-dark '>

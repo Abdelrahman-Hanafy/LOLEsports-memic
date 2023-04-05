@@ -1,5 +1,5 @@
 import React from 'react'
-import './rewards.css'
+import './Style/rewards.css'
 import rewards from '../assets/rewards.png'
 
 const Rewards = () => {

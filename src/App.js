@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./app.css";
 
 import Loading from "./Components/Loading";
-import Navbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar";
 // import Footer from "./Components/Footer";
 
 import Home from "./Components/Home";
@@ -11,6 +11,7 @@ import Schedule from "./Components/Schedule";
 import Standing from "./Components/Standing";
 import Rewards from "./Components/Rewards";
 import Login from "./Components/Login";
+import AddSchedule from "./Components/AddSchedule";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/standings" element={<Standing />}></Route>
               <Route path="/rewards" element={<Rewards />}></Route>
               <Route path="/login" element={<Login />}></Route>
+              <Route path="/AddMatch" element={<AddSchedule />}></Route>
             </Routes>
           </div>
           {/* <Footer /> */}

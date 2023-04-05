@@ -1,6 +1,6 @@
 import React from 'react'
 import SideFliter from "./SideFliter";
-import './standing.css'
+import './Style/standing.css'
 import { Link } from 'react-router-dom';
 
 const Standing = () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import SideFliter from "./SideFliter";
-import './schedule.css'
+import {Link} from 'react-router-dom'
+import './Style/schedule.css'
 
 const Schedule = () => {
   return (
@@ -8,6 +9,9 @@ const Schedule = () => {
       <SideFliter />
       <div className='content'>
         {/* <h1>Schedule</h1> */}
+        <Link to='/AddMatch' >
+                <button className="btn btn-outline-Secondary " type="button">Add Match</button>
+        </Link>
         <div className="EventDate">
           <div className="date">
             <span className="weekday">Today</span>
