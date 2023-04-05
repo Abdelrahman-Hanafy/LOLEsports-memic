@@ -1,40 +1,78 @@
 import React, { useState } from "react";
 import './Style/form.css'
+import {matches} from './constant'
+import { useNavigate } from 'react-router-dom';
 
 
 const AddSchedule = () => {
   const [dateValue, setDate] = useState(new Date());
-  const [dropdown1, setDropdown1] = useState("");
-  const [dropdown2, setDropdown2] = useState("");
-  const [dropdown3, setDropdown3] = useState("");
-  const [dropdown4, setDropdown4] = useState("");
+  const [League, setLeague] = useState("");
+  const [Red, setRed] = useState("");
+  const [Blue, setBlue] = useState("");
+  const [Rounds, setRounds] = useState("");
+  const leagues = {'LEC':['G2','BDS','KOI'],'LCK':['T1','GenG','DRX'],'Arbian League':['RAAD','GK','Triple']};
+  const leagueOptions = [];
+  const sideOptions = leagues[League] || [];
+  // const [submitted, setSubmitted] = useState(false);
+  const hist = useNavigate();
 
   const handleDateChange = (date) => {
     const datetime = date.target.value;
-    // console.log(atetime);
     setDate(datetime);
   };
 
-  const handleDropdown1Change = (event) => {
-    setDropdown1(event.target.value);
+  const handleLeagueChange = (event) => {
+    setLeague(event.target.value);
   };
 
-  const handleDropdown2Change = (event) => {
-    setDropdown2(event.target.value);
+  const handleRedChange = (event) => {
+    setRed(event.target.value);
   };
 
-  const handleDropdown3Change = (event) => {
-    setDropdown3(event.target.value);
+  const handleBlueChange = (event) => {
+    setBlue(event.target.value);
   };
 
-  const handleDropdown4Change = (event) => {
-    setDropdown4(event.target.value);
+  const handleRoundsChange = (event) => {
+    setRounds(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Do something with the form data
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const datetime = new Date(dateValue);
+    const match = {
+      'date': datetime,
+      'league' : League,
+      'stat' : Rounds,
+      'red' : Red,
+      'blue' : Blue,
+      'weekday' : weekdays[datetime.getDay()],
+      'monthday' : `${datetime.getDate()} ${months[datetime.getMonth()]}`,
+      'hour' : datetime.getHours().toString(10).padStart(2, '0'),
+      'minute' : datetime.getMinutes().toString(10).padStart(2, '0')
+    }
+    
+    if(match['red'] === match['blue'])
+      return false
+    
+    for(const i in match)
+      if(match[i] === '')
+        return false
+    matches.push(match);
+    // console.log(match);
+    // setSubmitted(true);
+    hist('/schedule')
+    return true;
   };
+
+  for(const lg in leagues){
+
+    leagueOptions.push(<option key={lg} value={lg}>{lg}</option>);
+  }
+
 
   return (
 
@@ -49,38 +87,45 @@ const AddSchedule = () => {
                 </div>
                 <div className="form-input">
                     League:
-                    <select value={dropdown1} onChange={handleDropdown1Change}>
+                    <select value={League} onChange={handleLeagueChange}>
                     <option value="">Select an option</option>
-                    <option value="option1">Arbian League</option>
-                    <option value="option2">LEC</option>
-                    <option value="option3">LCK</option>
+                    { leagueOptions}
+                    {/* <option value="option2">LEC</option> */}
+                    {/* <option value="option3">LCK</option> */}
                     </select>
                 </div>
                 <div className="form-input">
                     Red Side:
-                    <select value={dropdown2} onChange={handleDropdown2Change}>
+                    <select value={Red} onChange={handleRedChange}>
                     <option value="">Select an option</option>
-                    <option value="option1">T1</option>
-                    <option value="option2">RAAD</option>
-                    <option value="option3">GnG</option>
+                    {sideOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                      ))
+                    }
                     </select>
                 </div>
                 <div className="form-input">
                     Blue Side:
-                    <select value={dropdown3} onChange={handleDropdown3Change}>
+                    
+                    <select value={Blue} onChange={handleBlueChange}>
                     <option value="">Select an option</option>
-                    <option value="option1">Triple</option>
-                    <option value="option2">Mad Liones</option>
-                    <option value="option3">Funtic</option>
+                    {sideOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                      ))
+                    }
                     </select>
                 </div>
                 <div className="form-input">
                     Rounds:
-                    <select value={dropdown4} onChange={handleDropdown4Change}>
+                    <select value={Rounds} onChange={handleRoundsChange}>
                     <option value="">Select an option</option>
-                    <option value="option1">Best of 1</option>
-                    <option value="option2">Best of 3</option>
-                    <option value="option3">Best of 5</option>
+                    <option value="Best of 1">Best of 1</option>
+                    <option value="Best of 3">Best of 3</option>
+                    <option value="Best of 5">Best of 5</option>
                     </select>
                 </div>
                 <div className="form-submit">
