@@ -33,7 +33,7 @@ const Login = ({setloggedUser}) => {
 
     for(const u in users){
       // console.log(users[u]);
-      if(users[u]['name'] === user && users[u]['password']=== pass){
+      if((users[u]['name'] === user|| users[u]['gameHandel'] === user) && users[u]['password']=== pass){
         setloggedUser(user);
         // console.log(setloggedUser)
         hist('/');

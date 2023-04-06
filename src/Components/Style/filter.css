@@ -11,6 +11,10 @@
     color: #00c8c8;
     }
 
+.selected{
+    background: #000;
+}
+
 .side-list{
     /* text-decoration: none; */
     padding: 0;

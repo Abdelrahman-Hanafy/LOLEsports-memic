@@ -11,19 +11,33 @@ import {leagues} from './constant'
     const SideFliter = ({setLeagueSelected}) => {
 
     const handleOnSelectLeague = (event) => {
-        setLeagueSelected(event.target.innerText);
+        const value = event.target.innerText;
+        setLeagueSelected(value);
+
+        document.querySelectorAll("#side-list > li").forEach(
+            function (currentValue, currentIndex, listObj) {
+                currentValue.className = '';
+            }, 
+        "myThisArg");
+        
+        if(value !=='' && value !=='clear'){
+            document.getElementById(value).className = 'selected';
+        }
+
     };
 
     const leagueOptions = [];
     for(const lg in leagues){
-        leagueOptions.push(<li key={lg} id={lg} >
+        leagueOptions.push(
+            <li key={lg} id={lg} >
                 <ListItemButton onClick={handleOnSelectLeague}>
-                <ListItemIcon>
-                    <img src={leagues[lg]["logo"]} width="45" height="45" alt=''/>
-                </ListItemIcon>
-                <ListItemText primary={lg} />
+                    <ListItemIcon>
+                        <img src={leagues[lg]["logo"]} width="45" height="45" alt=''/>
+                    </ListItemIcon>
+                    <ListItemText primary={lg} />
                 </ListItemButton>
-            </li>);
+            </li>
+        );
     }
     
 
@@ -31,7 +45,7 @@ import {leagues} from './constant'
     return ( 
         <div className='MuiDrawer-paper' >
             <div className='filter'>FILTER</div>
-            <ul className='side-list'>
+            <ul className='side-list' id='side-list'>
                 <li key='cancel' id='cancel'  >
                     <ListItemButton onClick={handleOnSelectLeague}>
                     <ListItemIcon style={{justifyContent:'center'}}>
