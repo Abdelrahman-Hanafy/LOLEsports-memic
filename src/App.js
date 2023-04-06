@@ -4,7 +4,6 @@ import "./app.css";
 
 import Loading from "./Components/Loading";
 import Navbar from "./Components/Navbar";
-// import Footer from "./Components/Footer";
 
 import Home from "./Components/Home";
 import Schedule from "./Components/Schedule";
@@ -38,7 +37,6 @@ const App = () => {
               <Route path="/AddMatch" element={<AddSchedule />}></Route>
             </Routes>
           </div>
-          {/* <Footer /> */}
         </>
       )}
     </>
