@@ -16,23 +16,25 @@ const Navbarfun = ({loggedUser,setloggedUser}) => {
     const logged = [];
     if(window.localStorage.getItem('isLoggedIn') === 'true' && window.localStorage.getItem('loggedUserStay') === 'true' ){
         logged.push(
-            <>
+            <React.Fragment key={1}>
                 <Link to=''> HI, {window.localStorage.getItem('loggedUser')}</Link>
                 <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
-            </>
+            </React.Fragment>
         )
     }else if(loggedUser !== ''){
         logged.push(
-            <>
+            <React.Fragment key={2}>
                 <Link to=''> HI, {loggedUser}</Link>
                 <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
-            </>
+            </React.Fragment>
         )
     }else{
         logged.push(
-            <Link to='/login' >
-                <button className="btn btn-outline-success " type="button">Login</button>
-            </Link>
+            <React.Fragment key={3}>
+                <Link to='/login' >
+                    <button className="btn btn-outline-success " type="button">Login</button>
+                </Link>
+            </React.Fragment>
         )
     }
 

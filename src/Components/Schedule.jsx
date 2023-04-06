@@ -17,7 +17,7 @@ const Schedule = ({leagueSelected, setLeagueSelected}) => {
   {
     // console.log(matches[m]);
     const match = matches[m];
-    if(match['league'] === leagueSelected || leagueSelected==='clear'){
+    if(match['league'] === leagueSelected || leagueSelected==='clear' || leagueSelected===''){
       matchesList.push(
       <>
       <div  className="EventDate">
