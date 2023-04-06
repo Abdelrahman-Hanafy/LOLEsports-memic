@@ -14,6 +14,8 @@ import AddSchedule from "./Components/AddSchedule";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
+  const [loggedUser, setloggedUser] = useState("");
+
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -26,14 +28,17 @@ const App = () => {
         <Loading />
       ) : (
         <>
-          <Navbar />
+          <Navbar loggedUser={loggedUser} />
           <div className="container ">
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/schedule" element={<Schedule />}></Route>
               <Route path="/standings" element={<Standing />}></Route>
               <Route path="/rewards" element={<Rewards />}></Route>
-              <Route path="/login" element={<Login />}></Route>
+              <Route
+                path="/login"
+                element={<Login setloggedUser={setloggedUser} />}
+              ></Route>
               <Route path="/AddMatch" element={<AddSchedule />}></Route>
             </Routes>
           </div>

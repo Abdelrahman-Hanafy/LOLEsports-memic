@@ -3,7 +3,7 @@ import './Style/form.css'
 import { users } from './constant'
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setloggedUser}) => {
 
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
@@ -34,7 +34,12 @@ const Login = () => {
     for(const u in users){
       // console.log(users[u]);
       if(users[u]['name'] === user && users[u]['password']=== pass){
+        setloggedUser(user);
+        // console.log(setloggedUser)
         hist('/');
+        window.localStorage.setItem('isLoggedIn',true);
+        window.localStorage.setItem('loggedUser',user);
+        window.localStorage.setItem('loggedUserStay',stay);
         return true;
       }
       else if(users[u]['name'] === user){

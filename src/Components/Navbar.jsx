@@ -2,10 +2,40 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './Style/Navbar.css'
 
-const Navbarfun = () => {
-  var logo = require('../assets/image.png');
+const Navbarfun = ({loggedUser}) => {
+    var logo = require('../assets/image.png');
+    
+    const handleOnLogout = (event) => {
+        window.localStorage.setItem('isLoggedIn',false);
+        window.localStorage.setItem('loggedUser','');
+        window.localStorage.setItem('loggedUserStay',false);
+        window.location.reload();
+    };
 
-  return (
+    const logged = [];
+    if(window.localStorage.getItem('isLoggedIn') === 'true' && window.localStorage.getItem('loggedUserStay') === 'true' ){
+        logged.push(
+            <>
+                <Link to=''> HI, {window.localStorage.getItem('loggedUser')}</Link>
+                <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
+            </>
+        )
+    }else if(loggedUser !== ''){
+        logged.push(
+            <>
+                <Link to=''> HI, {loggedUser}</Link>
+                <button className="btn btn-outline-danger " type="button">Logout</button>
+            </>
+        )
+    }else{
+        logged.push(
+            <Link to='/login' >
+                <button className="btn btn-outline-success " type="button">Login</button>
+            </Link>
+        )
+    }
+
+    return (
     <nav className='navbar navbar-expand-lg navbar-dark '>
         <Link to='/' className='navbar-brand'>
             <img src={logo} width="90"  className="d-inline-block align-top" alt="" />
@@ -14,37 +44,36 @@ const Navbarfun = () => {
             <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav  mr-auto">
-          <li className="nav-item active">
-                  <Link className="nav-link" to='/'>
-                      Home
-                  </Link>
-              </li>
-              <li className="nav-item active">
-                  <Link className="nav-link" to='/schedule'>
-                      Schedule
-                  </Link>
-              </li>
-              <li className="nav-item">
-                  <Link className="nav-link" to='/standings'>
-                      Standing
-                  </Link>
-              </li>
-              <li className="nav-item">
-                  <Link className="nav-link" to='/rewards'>
-                      Rewards
-                  </Link>
-              </li>
-          </ul>
-          <span className="navbar-text">
-            <Link to='/login' >
-                <button className="btn btn-outline-info " type="button">Login</button>
-            </Link>
-          </span>
+            <ul className="navbar-nav  mr-auto">
+            <li className="nav-item active">
+                    <Link className="nav-link" to='/'>
+                        Home
+                    </Link>
+                </li>
+                <li className="nav-item active">
+                    <Link className="nav-link" to='/schedule'>
+                        Schedule
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to='/standings'>
+                        Standing
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to='/rewards'>
+                        Rewards
+                    </Link>
+                </li>
+            </ul>
+            <span className="navbar-text">
+                {logged}
+
+            </span>
         </div>
     </nav>
 
-  );
+    );
 }
 
 export default Navbarfun

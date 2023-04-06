@@ -26,3 +26,8 @@ a img{
     background-color: #111;
     z-index: 1300;
 }
+
+.navbar-text{
+    gap: 1rem;
+    display: inline-flex;
+}

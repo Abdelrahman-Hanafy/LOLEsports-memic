@@ -40,4 +40,8 @@ export const users = [
     name: "8orilla",
     password: "letmein",
   },
+  {
+    name: "hanafy",
+    password: "1234",
+  },
 ];
