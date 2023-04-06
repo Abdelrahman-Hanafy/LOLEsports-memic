@@ -2,13 +2,14 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './Style/Navbar.css'
 
-const Navbarfun = ({loggedUser}) => {
+const Navbarfun = ({loggedUser,setloggedUser}) => {
     var logo = require('../assets/image.png');
     
     const handleOnLogout = (event) => {
         window.localStorage.setItem('isLoggedIn',false);
         window.localStorage.setItem('loggedUser','');
         window.localStorage.setItem('loggedUserStay',false);
+        setloggedUser('');
         window.location.reload();
     };
 
@@ -24,7 +25,7 @@ const Navbarfun = ({loggedUser}) => {
         logged.push(
             <>
                 <Link to=''> HI, {loggedUser}</Link>
-                <button className="btn btn-outline-danger " type="button">Logout</button>
+                <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
             </>
         )
     }else{

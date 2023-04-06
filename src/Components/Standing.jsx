@@ -3,10 +3,10 @@ import SideFliter from "./SideFliter";
 import './Style/standing.css'
 import { Link } from 'react-router-dom';
 
-const Standing = () => {
+const Standing = ({leagueSelected, setLeagueSelected}) => {
   return (
     <>
-    <SideFliter />
+    <SideFliter setLeagueSelected={setLeagueSelected} />
     <div className='content'>
       <div className="title">Standings</div>
       <Link to="/teams" className="ranking">

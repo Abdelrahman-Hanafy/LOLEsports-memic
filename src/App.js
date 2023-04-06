@@ -15,6 +15,7 @@ import AddSchedule from "./Components/AddSchedule";
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [loggedUser, setloggedUser] = useState("");
+  const [leagueSelected, setLeagueSelected] = useState("clear");
 
   useEffect(() => {
     setLoading(true);
@@ -28,12 +29,28 @@ const App = () => {
         <Loading />
       ) : (
         <>
-          <Navbar loggedUser={loggedUser} />
+          <Navbar loggedUser={loggedUser} setloggedUser={setloggedUser} />
           <div className="container ">
             <Routes>
               <Route path="/" element={<Home />}></Route>
-              <Route path="/schedule" element={<Schedule />}></Route>
-              <Route path="/standings" element={<Standing />}></Route>
+              <Route
+                path="/schedule"
+                element={
+                  <Schedule
+                    leagueSelected={leagueSelected}
+                    setLeagueSelected={setLeagueSelected}
+                  />
+                }
+              ></Route>
+              <Route
+                path="/standings"
+                element={
+                  <Standing
+                    leagueSelected={leagueSelected}
+                    setLeagueSelected={setLeagueSelected}
+                  />
+                }
+              ></Route>
               <Route path="/rewards" element={<Rewards />}></Route>
               <Route
                 path="/login"
