@@ -68,7 +68,7 @@ const Schedule = ({leagueSelected, setLeagueSelected}) => {
     <>
       <SideFliter setLeagueSelected={setLeagueSelected} />
       <div className='content'>
-        <h1>Schedule</h1>
+        <div className="title">Schedule</div>
         <Link to='/AddMatch' >
                 <button className="btn btn-outline-Secondary " type="button">Add Match</button>
         </Link>

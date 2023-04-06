@@ -4,9 +4,9 @@
 .MuiDrawer-paper{
     width: 20vw;
     box-sizing: border-box;
-    position: relative;
+    position: sticky;
     float: left;
-    height:100vh;
+    min-height:100vh;
     background-color: #0a0e13;
     color: #00c8c8;
     }
@@ -21,10 +21,11 @@
 @media screen and (max-width: 720px) {
     .MuiDrawer-paper{
         width: 100vw;
-        height: 7vh;
+        max-height: 5rem;
+        min-height: auto;
+
+        position: relative;
+        overflow: auto;
     }
 
-    .side-list{
-        visibility: hidden;
-    }
 }
