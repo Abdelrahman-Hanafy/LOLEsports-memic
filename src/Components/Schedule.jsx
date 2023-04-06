@@ -6,7 +6,6 @@ import {matches} from './constant'
 
 const Schedule = ({leagueSelected, setLeagueSelected}) => {
 
-  console.log(leagueSelected);
   const matchesList = [];
   matches.sort((a, b) => {
     const dateA = new Date(a.date);
@@ -15,11 +14,10 @@ const Schedule = ({leagueSelected, setLeagueSelected}) => {
   });
   for(const m in matches)
   {
-    // console.log(matches[m]);
     const match = matches[m];
     if(match['league'] === leagueSelected || leagueSelected==='clear' || leagueSelected===''){
       matchesList.push(
-      <>
+      <React.Fragment key={`${match['monthday']}${match['blue']}${match['red']}`}>
       <div  className="EventDate">
         <div className="date">
           <span className="weekday">{match['weekday']}</span>
@@ -60,7 +58,7 @@ const Schedule = ({leagueSelected, setLeagueSelected}) => {
           </div>
         </div>
       </div>
-      </>
+      </React.Fragment>
       );
     }
   }

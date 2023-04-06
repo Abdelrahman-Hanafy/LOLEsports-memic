@@ -8,10 +8,8 @@ const Standing = ({leagueSelected, setLeagueSelected}) => {
 
   const teams = []
   if(leagueSelected !== 'clear' && leagueSelected !==''){
-    // console.log(leagueSelected)
     for(const i in leagues[leagueSelected]['teams']){
       const team = leagues[leagueSelected]['teams'][i]
-      console.log(team);
       teams.push(
         <React.Fragment key={team['standing']}>
           <Link to="/teams" className="ranking">
