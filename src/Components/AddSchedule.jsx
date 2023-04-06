@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import './Style/form.css'
-import {matches} from './constant'
+import {matches, leagues} from './constant'
 import { useNavigate } from 'react-router-dom';
 
 
 const AddSchedule = () => {
   const [dateValue, setDate] = useState(new Date());
-  const [League, setLeague] = useState("");
+  const [League, setLeague] = useState("LEC");
   const [Red, setRed] = useState("");
   const [Blue, setBlue] = useState("");
   const [Rounds, setRounds] = useState("");
-  const leagues = {'LEC':['G2','BDS','KOI'],'LCK':['T1','GenG','DRX'],'Arbian League':['RAAD','GK','Triple']};
   const leagueOptions = [];
-  const sideOptions = leagues[League] || [];
-  // const [submitted, setSubmitted] = useState(false);
+  const sideOptions = leagues[League]["teams"] || [];
+
   const hist = useNavigate();
 
   const handleDateChange = (date) => {
@@ -62,8 +61,6 @@ const AddSchedule = () => {
       if(match[i] === '')
         return false
     matches.push(match);
-    // console.log(match);
-    // setSubmitted(true);
     hist('/schedule')
     return true;
   };
@@ -88,10 +85,8 @@ const AddSchedule = () => {
                 <div className="form-input">
                     League:
                     <select value={League} onChange={handleLeagueChange}>
-                    <option value="">Select an option</option>
+                    {/* <option value="">Select an option</option> */}
                     { leagueOptions}
-                    {/* <option value="option2">LEC</option> */}
-                    {/* <option value="option3">LCK</option> */}
                     </select>
                 </div>
                 <div className="form-input">
