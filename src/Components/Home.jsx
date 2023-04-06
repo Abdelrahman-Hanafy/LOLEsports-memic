@@ -1,8 +1,35 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Style/Home.css'
+import {homeContent} from './constant'
 
 const Home = () => {
+
+  const contentList = [];
+  for(const item in homeContent){
+    // console.log(homeContent[item]);
+    const cItem = homeContent[item];
+    contentList.push(
+      <div key={cItem['title']} className="HomeContentBlock">
+        <Link to='/' className='content-block video'>
+          <div className="thumbnail">
+            <div className="background" style={{
+              backgroundImage: `url(${cItem['background']})`
+            }}>
+            </div>
+            <div className="duration">{cItem['duration']}</div>
+          </div>
+          <div className="description">
+            <div className="content-type">{cItem['type']}</div>
+            <div className="title"> {cItem['title']}</div>
+          </div>
+        </Link>
+      </div>
+    )
+  }
+
+  const half = Math.ceil(contentList.length / 2);
+
   return (
     <div className='content with-out'>
       <div className="header">
@@ -12,72 +39,11 @@ const Home = () => {
 
         <div className="content-list">
 
-          <div className="HomeContentBlock">
-            <Link to='/' className='content-block video'>
-              <div className="thumbnail">
-                <div className="background" style={{
-                  backgroundImage: `url(${require("../assets/homeContentbk.jpg")})`
-                }}>
-                </div>
-                <div className="duration">09:08</div>
-              </div>
-              <div className="description">
-                <div className="content-type">VIDEO</div>
-                <div className="title"> Deconstructed Drafts - Coach Special  | LEC Pop Quiz | 2023 Spring</div>
-              </div>
-            </Link>
-          </div>
-          <div className="HomeContentBlock">
-            <Link to='/' className='content-block video'>
-              <div className="thumbnail">
-                <div className="background" style={{
-                  backgroundImage: `url(${require("../assets/homeContentbk.jpg")})`
-                }}>
-                </div>
-                <div className="duration">09:08</div>
-              </div>
-              <div className="description">
-                <div className="content-type">VIDEO</div>
-                <div className="title"> Deconstructed Drafts - Coach Special  | LEC Pop Quiz | 2023 Spring</div>
-              </div>
-            </Link>
-          </div>
-
+          {contentList.slice(0,half)}
         </div>
 
         <div className="content-list">
-          
-          <div className="HomeContentBlock">
-            <Link to='/' className='content-block video'>
-            <div className="thumbnail">
-                <div className="background" style={{
-                  backgroundImage: `url(${require("../assets/homeContentbk2.jpg")})`
-                }}>
-                </div>
-                <div className="duration">34:58</div>
-              </div>
-              <div className="description">
-                <div className="content-type">VIDEO</div>
-                <div className="title"> Full Day Highlights | W3 D3 | LEC Spring 2023 </div>
-              </div>
-            </Link>
-          </div>
-          <div className="HomeContentBlock">
-            <Link to='/' className='content-block video'>
-            <div className="thumbnail">
-                <div className="background" style={{
-                  backgroundImage: `url(${require("../assets/homeContentbk2.jpg")})`
-                }}>
-                </div>
-                <div className="duration">34:58</div>
-              </div>
-              <div className="description">
-                <div className="content-type">VIDEO</div>
-                <div className="title"> Full Day Highlights | W3 D3 | LEC Spring 2023 </div>
-              </div>
-            </Link>
-          </div>
-
+          {contentList.slice(half)}
         </div>
       </div>
     </div>
