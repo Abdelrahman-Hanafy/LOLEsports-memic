@@ -34,3 +34,10 @@ export const homeContent = [
     title: "Deconstructed Drafts - Coach Special  | LEC Pop Quiz | 2023 Spring",
   },
 ];
+
+export const users = [
+  {
+    name: "8orilla",
+    password: "letmein",
+  },
+];

@@ -75,9 +75,9 @@ const AddSchedule = () => {
 
     <div className='all-parent'>
       <div className='all'>
-        <div className="form">
 
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <div className="form">
                 <div className="form-input">
                     Date and Time:
                     <input type="datetime-local" value={dateValue} onChange={handleDateChange}  />
@@ -126,9 +126,10 @@ const AddSchedule = () => {
                 <div className="form-submit">
                     <button id='form-submit' type='submit'/>
                 </div>
-            </form>
 
-        </div>
+          </div>
+        </form>
+        
       </div>
     </div>
   );
