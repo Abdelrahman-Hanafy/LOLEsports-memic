@@ -10,6 +10,7 @@ import Schedule from "./Components/Schedule";
 import Standing from "./Components/Standing";
 import Rewards from "./Components/Rewards";
 import Login from "./Components/Login";
+import Signup from "./Components/Signup";
 import AddSchedule from "./Components/AddSchedule";
 
 const App = () => {
@@ -56,6 +57,7 @@ const App = () => {
                 path="/login"
                 element={<Login setloggedUser={setloggedUser} />}
               ></Route>
+              <Route path="/signup" element={<Signup />}></Route>
               <Route path="/AddMatch" element={<AddSchedule />}></Route>
             </Routes>
           </div>

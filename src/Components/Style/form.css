@@ -43,6 +43,21 @@
     background-color: black;
 }
 
+#form-reset{
+    background-image : url('../../assets/close.svg');
+    border: 2px solid #e8e8e8;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+}
+#form-reset:hover{
+    background-color: rgba(255, 0, 0, 0.482);
+}
+
+
 .form-input-box{
     width: 100%;
 
@@ -57,11 +72,6 @@
     justify-content: center;
 }
 
-/* @media screen and (max-width : 720px) {
-    .all-parent{
-        height: 90vh;
-    }
-    #root{
-        height: 100vh;
-    }
-} */
+.form-input button{
+    margin: 0 2rem;
+}

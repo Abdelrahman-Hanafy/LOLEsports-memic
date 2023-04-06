@@ -110,11 +110,9 @@ export const homeContent = [
 
 export const users = [
   {
-    name: "8orilla",
-    password: "letmein",
-  },
-  {
     name: "hanafy",
+    gameHandel: "8orilla",
     password: "1234",
+    email: "Abdohanafy4@gmail.com",
   },
 ];

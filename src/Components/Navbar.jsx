@@ -31,6 +31,9 @@ const Navbarfun = ({loggedUser,setloggedUser}) => {
     }else{
         logged.push(
             <React.Fragment key={3}>
+                <Link to='/signup'>
+                    <button className="btn btn-outline-info " type="button">Signup</button>
+                </Link>
                 <Link to='/login' >
                     <button className="btn btn-outline-success " type="button">Login</button>
                 </Link>
