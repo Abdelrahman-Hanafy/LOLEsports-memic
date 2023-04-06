@@ -94,8 +94,8 @@ const AddSchedule = () => {
                     <select value={Red} onChange={handleRedChange}>
                     <option value="">Select an option</option>
                     {sideOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
+                      <option key={option['name']} value={option['name']}>
+                        {option['name']}
                       </option>
                       ))
                     }
@@ -107,8 +107,8 @@ const AddSchedule = () => {
                     <select value={Blue} onChange={handleBlueChange}>
                     <option value="">Select an option</option>
                     {sideOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
+                      <option key={option['name']} value={option['name']}>
+                        {option['name']}
                       </option>
                       ))
                     }
