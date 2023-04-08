@@ -1,40 +1,59 @@
-# Riot LOL E-Sports website memic
+# LOLEsports-memic
 
-This project is associated with web engineering course CC552.
+This is a university project that mimics the functionality of the [LOLEsports](https://lolesports.com/) website. It is built using React and styled-components, and it uses the LOL Esports API to fetch the data.
 
-Done by:
+## Table of Contents
 
-- Abdelrahman Mohamed Hanafy  19108100
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+To run this application locally, you'll need to have Node.js and npm (or yarn) installed on your machine.
 
-### `npm start`
+1. Clone the repository:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    ```bash
+    git clone https://github.com/Abdelrahman-Hanafy/LOLEsports-memic.git
+    ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Install the dependencies:
 
-### `npm test`
+    ```bash
+    npm install
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start the development server:
 
-### `npm run build`
+    ```bash
+    npm start
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once you have the app running, you can browse through the different teams and view their details by clicking on them.
 
-## Learn More
+The application mimics the functionality of the [LOLEsports](https://lolesports.com/) website, including displaying information about esports teams and their players, as well as displaying information about upcoming and past matches.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request.
+
+## Credits
+
+This project was developed by:
+
+- [Abdelrahman Hanafy 19108100](https://github.com/Abdelrahman-Hanafy)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Thank you for checking out this repository! If you have any questions or feedback, please don't hesitate to reach out.
