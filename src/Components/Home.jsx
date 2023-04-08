@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './Style/Home.css'
 import {homeContent} from './constant'
 
 const Home = () => {
+
+  useEffect(() => {
+    fetch('https://localhost:7088/api/Product/All',{
+      // mode:"no-cors"
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+    }, []);
 
   const contentList = [];
   for(const item in homeContent){
