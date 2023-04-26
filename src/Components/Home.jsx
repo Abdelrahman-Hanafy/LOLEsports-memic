@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './Style/Home.css'
 import { useState } from 'react'
-// import {homeContent} from './constant'
 
 const Home = () => {
 

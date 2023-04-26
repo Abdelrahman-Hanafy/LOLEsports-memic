@@ -1,17 +1,10 @@
-import React , { useState,useEffect } from 'react'
+import React , { useState } from 'react'
 import './Style/form.css'
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({setloggedUser}) => {
 
   const [users,setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch('https://localhost:7091/api/Users',{
-    })
-    .then(response => response.json())
-    .then(json => setUsers(json))
-    }, []);
 
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
@@ -33,6 +26,9 @@ const Login = ({setloggedUser}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    fetch('https://localhost:7091/api/Users',{})
+      .then(response => response.json())
+      .then(json => setUsers(json))
 
     if(user === '' || pass === ''){
       alert("PLS ENTER FULL DATA");

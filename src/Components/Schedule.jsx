@@ -15,7 +15,7 @@ const Schedule = ({leagueSelected, setLeagueSelected}) => {
   for(const m in matches)
   {
     const match = matches[m];
-    if(match['league'] === leagueSelected || leagueSelected==='clear' || leagueSelected===''){
+    if(match['league'] === leagueSelected || leagueSelected===''){
       matchesList.push(
       <React.Fragment key={`${match['monthday']}${match['blue']}${match['red']}`}>
       <div  className="EventDate">

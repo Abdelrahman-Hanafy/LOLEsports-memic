@@ -1,19 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import SideFliter from "./SideFliter";
 import './Style/standing.css'
 import { Link } from 'react-router-dom';
-import {leagues} from './constant'
 
 const Standing = ({leagueSelected, setLeagueSelected}) => {
 
   const teams = []
-  if(leagueSelected !== 'clear' && leagueSelected !==''){
-    for(const i in leagues[leagueSelected]['teams']){
-      const team = leagues[leagueSelected]['teams'][i]
+  const [leagueTeams,setLeagueTeams] = useState([])
+
+  useEffect(()=>{
+    if (leagueSelected !== '')
+      fetch(`https://localhost:7091/api/leagues/teams?league=${leagueSelected}`,{
+      })
+      .then(response => response.json())
+      .then(json => setLeagueTeams(json)).catch(e => console.log(e))
+  },[leagueSelected])
+
+  if(leagueSelected !==''){
+    
+    for(const i in leagueTeams){
+      const team = leagueTeams[i]
       teams.push(
-        <React.Fragment key={team['standing']}>
+        <React.Fragment key={i}>
           <Link to="/teams" className="ranking">
-            <div className="ordinal">{team['standing']}</div>
+            <div className="ordinal">{(+i+1).toString().padStart(2, '0')}</div>
               <div className="team">
                 <div className="team-logo">
                   <img src={team['logo']} className="logo" alt="" />

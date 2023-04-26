@@ -16,7 +16,7 @@ import AddSchedule from "./Components/AddSchedule";
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [loggedUser, setloggedUser] = useState("");
-  const [leagueSelected, setLeagueSelected] = useState("clear");
+  const [leagueSelected, setLeagueSelected] = useState("");
 
   useEffect(() => {
     setLoading(true);
