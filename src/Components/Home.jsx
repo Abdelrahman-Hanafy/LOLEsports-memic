@@ -1,28 +1,33 @@
 import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './Style/Home.css'
-import {homeContent} from './constant'
+import { useState } from 'react'
+// import {homeContent} from './constant'
 
 const Home = () => {
 
+  const [homeContent,setContent] = useState([]);
+
   useEffect(() => {
-    fetch('https://localhost:7088/api/Product/All',{
-      // mode:"no-cors"
+    fetch('https://localhost:7091/api/News',{
     })
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => setContent(json))
     }, []);
 
+
+  // console.log(homeContent)
   const contentList = [];
   for(const item in homeContent){
     // console.log(homeContent[item]);
     const cItem = homeContent[item];
+    // cItem['background'] = require(cItem['image']).default;
     contentList.push(
       <div key={cItem['title']} className="HomeContentBlock">
         <Link to='/' className='content-block video'>
           <div className="thumbnail">
             <div className="background" style={{
-              backgroundImage: `url(${cItem['background']})`
+              backgroundImage: `url(${cItem['image']})`
             }}>
             </div>
             <div className="duration">{cItem['duration']}</div>
