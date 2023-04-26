@@ -6,18 +6,18 @@ const Navbarfun = ({loggedUser,setloggedUser}) => {
     var logo = require('../assets/image.png');
     
     const handleOnLogout = (event) => {
-        window.localStorage.setItem('isLoggedIn',false);
-        window.localStorage.setItem('loggedUser','');
-        window.localStorage.setItem('loggedUserStay',false);
+        window.sessionStorage.setItem('isLoggedIn',false);
+        window.sessionStorage.setItem('loggedUser','');
+        window.sessionStorage.setItem('loggedUserStay',false);
         setloggedUser('');
         window.location.reload();
     };
 
     const logged = [];
-    if(window.localStorage.getItem('isLoggedIn') === 'true' && window.localStorage.getItem('loggedUserStay') === 'true' ){
+    if(window.sessionStorage.getItem('isLoggedIn') === 'true' && window.sessionStorage.getItem('loggedUserStay') === 'true' ){
         logged.push(
             <React.Fragment key={1}>
-                <Link to=''> HI, {window.localStorage.getItem('loggedUser')}</Link>
+                <Link to=''> HI, {window.sessionStorage.getItem('loggedUser')}</Link>
                 <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
             </React.Fragment>
         )

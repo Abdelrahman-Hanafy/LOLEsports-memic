@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './Style/form.css'
-import { users } from './constant'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -50,12 +49,20 @@ const Signup = () => {
             return false
         }else if(pass.match(/(?=^.{6,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).*$/)){
             const userData = {
-                name: user, 
-                gameHandel: handel,
-                password: pass,
-                email:mail
+                "name": user, 
+                "Handel": handel,
+                "password": pass,
+                "email":mail
             };
-            users.push(userData);
+                // Send data to the backend via POST
+            fetch('https://localhost:7091/api/Users', {  // Enter your IP address here
+                method: 'POST', 
+                mode: 'cors', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData) // body data type must match "Content-Type" header
+            })
             hist('/login');
             return true
         }

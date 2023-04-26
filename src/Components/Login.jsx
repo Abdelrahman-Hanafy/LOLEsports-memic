@@ -1,9 +1,17 @@
-import React , { useState } from 'react'
+import React , { useState,useEffect } from 'react'
 import './Style/form.css'
-import { users } from './constant'
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({setloggedUser}) => {
+
+  const [users,setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://localhost:7091/api/Users',{
+    })
+    .then(response => response.json())
+    .then(json => setUsers(json))
+    }, []);
 
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
@@ -33,18 +41,20 @@ const Login = ({setloggedUser}) => {
 
     for(const u in users){
       // console.log(users[u]);
-      if((users[u]['name'] === user|| users[u]['gameHandel'] === user) && users[u]['password']=== pass){
-        setloggedUser(user);
-        // console.log(setloggedUser)
-        hist('/');
-        window.localStorage.setItem('isLoggedIn',true);
-        window.localStorage.setItem('loggedUser',user);
-        window.localStorage.setItem('loggedUserStay',stay);
-        return true;
-      }
-      else if(users[u]['name'] === user){
-        alert("WRONG PASSWORD");
-        return false;
+      if((users[u]['email'] === user|| users[u]['handel'] === user)){
+        if(users[u]['password']=== pass){
+          setloggedUser(user);
+          // console.log(setloggedUser)
+          hist('/');
+          window.sessionStorage.setItem('isLoggedIn',true);
+          window.sessionStorage.setItem('loggedUser',users[u]['name']);
+          window.sessionStorage.setItem('loggedUserStay',stay);
+          return true;
+        }
+        else{
+          alert("WRONG PASSWORD");
+          return false;
+        }
       }
     }
     alert("NO SUCH USER");
