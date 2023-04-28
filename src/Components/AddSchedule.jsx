@@ -1,19 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Style/form.css'
-import {matches, leagues} from './constant'
+// import {matches, leagues} from './constant'
 import { useNavigate } from 'react-router-dom';
 
+// TODO: post api/leagues/matches?league=id to add match to dataBase
 
 const AddSchedule = () => {
   const [dateValue, setDate] = useState(new Date());
-  const [League, setLeague] = useState("LEC");
+  const [League, setLeague] = useState(1);
   const [Red, setRed] = useState("");
   const [Blue, setBlue] = useState("");
   const [Rounds, setRounds] = useState("");
-  const leagueOptions = [];
-  const sideOptions = leagues[League]["teams"] || [];
+  const [leagueOptions, setLeagueOptions ] = useState([]);
+  const [sideOptions, SetSideOptions] = useState([]);
 
   const hist = useNavigate();
+  useEffect(() => {
+    fetch('https://localhost:7091/api/leagues',{
+    })
+    .then(response => response.json())
+    .then(json => setLeagueOptions(json))
+    }, []);
+
+  useEffect(()=>{
+    console.log("change")
+    if (League !== '')
+      fetch(`https://localhost:7091/api/leagues/teams?league=${League}`,{
+      })
+      .then(response => response.json())
+      .then(json => SetSideOptions(json)).catch(e => console.log(e))
+  },[League])
 
   const handleDateChange = (date) => {
     const datetime = date.target.value;
@@ -39,35 +55,55 @@ const AddSchedule = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Do something with the form data
-    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    //const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    //const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const datetime = new Date(dateValue);
     const match = {
-      'date': datetime,
-      'league' : League,
-      'stat' : Rounds,
-      'red' : Red,
-      'blue' : Blue,
-      'weekday' : weekdays[datetime.getDay()],
-      'monthday' : `${datetime.getDate()} ${months[datetime.getMonth()]}`,
-      'hour' : datetime.getHours().toString(10).padStart(2, '0'),
-      'minute' : datetime.getMinutes().toString(10).padStart(2, '0')
+      time: datetime,
+      type : +Rounds,
+      redID : +Red,
+      blueID : +Blue,
+      leagueId: +League,
+      "blueScore": 0,
+      "blueVote": 0,
+      "redScore": 0,
+      "redVote": 0
+      //'weekday' : weekdays[datetime.getDay()],
+      //'monthday' : `${datetime.getDate()} ${months[datetime.getMonth()]}`,
+      //'hour' : datetime.getHours().toString(10).padStart(2, '0'),
+      //'minute' : datetime.getMinutes().toString(10).padStart(2, '0')
     }
     
-    if(match['red'] === match['blue'])
+    if(match['redID'] === match['blueID']){
       return false
+    }
     
-    for(const i in match)
-      if(match[i] === '')
-        return false
-    matches.push(match);
+    for(const i in match){
+      if(match[i] === ''){
+      return false
+
+      }
+    }
+
+    console.log(match)
+    // matches.push(match);
+    fetch('https://localhost:7091/api/Matches', {  // Enter your IP address here
+    method: 'POST', 
+    mode: 'cors', 
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(match) // body data type must match "Content-Type" header
+    })
+
     hist('/schedule')
     return true;
   };
 
-  for(const lg in leagues){
-
-    leagueOptions.push(<option key={lg} value={lg}>{lg}</option>);
+  const leagueList = [] // to display
+  for(const lg in leagueOptions){
+    // console.log(lg)
+    leagueList.push(<option key={leagueOptions[lg]["id"]} value={leagueOptions[lg]["id"]}>{leagueOptions[lg]["name"]}</option>);
   }
 
 
@@ -86,7 +122,7 @@ const AddSchedule = () => {
                     League:
                     <select value={League} onChange={handleLeagueChange}>
                     {/* <option value="">Select an option</option> */}
-                    { leagueOptions}
+                    { leagueList}
                     </select>
                 </div>
                 <div className="form-input">
@@ -94,7 +130,7 @@ const AddSchedule = () => {
                     <select value={Red} onChange={handleRedChange}>
                     <option value="">Select an option</option>
                     {sideOptions.map((option) => (
-                      <option key={option['name']} value={option['name']}>
+                      <option key={option['name']} value={option['id']}>
                         {option['name']}
                       </option>
                       ))
@@ -107,7 +143,7 @@ const AddSchedule = () => {
                     <select value={Blue} onChange={handleBlueChange}>
                     <option value="">Select an option</option>
                     {sideOptions.map((option) => (
-                      <option key={option['name']} value={option['name']}>
+                      <option key={option['name']} value={option['id']}>
                         {option['name']}
                       </option>
                       ))
@@ -118,9 +154,9 @@ const AddSchedule = () => {
                     Rounds:
                     <select value={Rounds} onChange={handleRoundsChange}>
                     <option value="">Select an option</option>
-                    <option value="Best of 1">Best of 1</option>
-                    <option value="Best of 3">Best of 3</option>
-                    <option value="Best of 5">Best of 5</option>
+                    <option value="0">Best of 1</option>
+                    <option value="1">Best of 3</option>
+                    <option value="2">Best of 5</option>
                     </select>
                 </div>
                 <div className="form-submit">

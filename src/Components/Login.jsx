@@ -26,9 +26,12 @@ const Login = ({setloggedUser}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     fetch('https://localhost:7091/api/Users',{})
-      .then(response => response.json())
-      .then(json => setUsers(json))
+    .then(response => response.json())
+    .then(json => {setUsers(json);})
+    
+    console.log(users)
 
     if(user === '' || pass === ''){
       alert("PLS ENTER FULL DATA");

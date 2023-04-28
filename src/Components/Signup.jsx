@@ -41,9 +41,12 @@ const Signup = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = [user,handel,pass,pass2,mail];
+        // console.log(data)
         if( data.some((input) => input.trim() === '')) {
+            console.log("freedata")
             return false
         }
+
         if(pass !== pass2){
             alert("Pass does not match");
             return false
@@ -65,6 +68,9 @@ const Signup = () => {
             })
             hist('/login');
             return true
+        }else{
+            console.log("yalalalaal")
+
         }
     }
 

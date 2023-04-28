@@ -13,7 +13,8 @@ const Standing = ({leagueSelected, setLeagueSelected}) => {
       fetch(`https://localhost:7091/api/leagues/teams?league=${leagueSelected}`,{
       })
       .then(response => response.json())
-      .then(json => setLeagueTeams(json)).catch(e => console.log(e))
+      .then(json => setLeagueTeams(json))
+      .catch(e => console.log(e))
   },[leagueSelected])
 
   if(leagueSelected !==''){
