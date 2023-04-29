@@ -6,16 +6,21 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
+import axios from 'axios';
 
     const SideFliter = ({setLeagueSelected}) => {
 
     const [leagues,setLeagues] = useState([]);
 
     useEffect(() => {
-        fetch('https://localhost:7091/api/leagues',{
-        })
-        .then(response => response.json())
-        .then(json => setLeagues(json))
+
+    const fetchLeagues = async ()=>{
+        const res = await axios.get('https://localhost:7091/api/leagues',{})
+        const resData = await res.data
+        setLeagues(resData)
+    }        
+        
+    fetchLeagues();
     }, []);
 
     const handleOnSelectLeague = (val) => {
