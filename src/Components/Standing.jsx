@@ -44,7 +44,7 @@ const Standing = ({leagueSelected, setLeagueSelected}) => {
   return (
     <>
     <SideFliter setLeagueSelected={setLeagueSelected} />
-    <div className='content'>
+    <div className='content withSide'>
       <div className="title">Standings</div>
       {teams}
     </div>

@@ -66,11 +66,13 @@ const Schedule = ({leagueSelected, setLeagueSelected}) => {
   return (
     <>
       <SideFliter setLeagueSelected={setLeagueSelected} />
-      <div className='content'>
-        <div className="title">Schedule</div>
-        <Link to='/AddMatch' >
-                <button className="btn btn-outline-Secondary " type="button">Add Match</button>
-        </Link>
+      <div className='content withSide'>
+        <div className="title-container">
+          <div className="title">Schedule</div>
+          <Link to='/AddMatch' >
+            <button className="btn btn-outline-Secondary " type="button">Add Match</button>
+          </Link>
+        </div>
         {matchesList}
       </div>
 

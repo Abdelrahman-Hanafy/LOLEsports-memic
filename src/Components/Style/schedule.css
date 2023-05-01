@@ -1,3 +1,8 @@
+.withSide{
+    width: 80vw;
+    margin-left: 20vw;
+}
+
 .EventDate .date {
     margin: 0 34px;
     padding: 48px 0 15px 0;
@@ -130,6 +135,14 @@
     margin: 16px 0;
     box-sizing: content-box;
 }
+
+
+.title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 @media screen and (max-width: 720px) {
     .EventMatch .event.future{

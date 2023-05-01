@@ -1,14 +1,15 @@
 import React , { useState } from 'react'
 import './Style/form.css'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = ({setloggedUser}) => {
 
-  const [users,setUsers] = useState([]);
 
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [stay, setstay] = useState(false);
+  const [token, setToken] = useState("");
   const hist = useNavigate();
 
   const handleUserChange = (event) => {
@@ -27,37 +28,40 @@ const Login = ({setloggedUser}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    fetch('https://localhost:7091/api/Users',{})
-    .then(response => response.json())
-    .then(json => {setUsers(json);})
-    
-    console.log(users)
-
     if(user === '' || pass === ''){
       alert("PLS ENTER FULL DATA");
       return false;
     }
 
-    for(const u in users){
-      // console.log(users[u]);
-      if((users[u]['email'] === user|| users[u]['handel'] === user)){
-        if(users[u]['password']=== pass){
-          setloggedUser(user);
-          // console.log(setloggedUser)
-          hist('/');
-          window.sessionStorage.setItem('isLoggedIn',true);
-          window.sessionStorage.setItem('loggedUser',users[u]['name']);
-          window.sessionStorage.setItem('loggedUserStay',stay);
-          return true;
-        }
-        else{
+    const userData = {
+      "handel": user, 
+      "password": pass,
+    };
+
+    axios.post(`https://localhost:7091/api/Users/login`,userData)
+      .then(res => {
+        const token = res.data;
+        setToken(token)
+        window.sessionStorage.setItem('userToken',token);
+        window.sessionStorage.setItem('loggedUserStay',stay);
+        window.sessionStorage.setItem('loggedUser',user);
+        setloggedUser(user);
+        hist("/")
+        // console.log(token)
+      }).catch(err => {
+        const msg = err.response.data;
+        // handle error here
+        if(msg === "Wrong Password"){
           alert("WRONG PASSWORD");
+          return false
+        }
+        if(msg === "NO user found"){
+          alert("NO SUCH USER");
           return false;
         }
-      }
-    }
-    alert("NO SUCH USER");
-    return false;
+
+      });
+
   };
 
   return (
