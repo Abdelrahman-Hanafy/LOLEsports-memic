@@ -3,13 +3,12 @@ import './Style/form.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = ({setloggedUser}) => {
+const Login = () => {
 
 
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [stay, setstay] = useState(false);
-  const [token, setToken] = useState("");
   const hist = useNavigate();
 
   const handleUserChange = (event) => {
@@ -41,13 +40,11 @@ const Login = ({setloggedUser}) => {
     axios.post(`https://localhost:7091/api/Users/login`,userData)
       .then(res => {
         const token = res.data;
-        setToken(token)
         window.sessionStorage.setItem('userToken',token);
         window.sessionStorage.setItem('loggedUserStay',stay);
         window.sessionStorage.setItem('loggedUser',user);
-        setloggedUser(user);
-        hist("/")
-        // console.log(token)
+        window.location.reload();
+        
       }).catch(err => {
         const msg = err.response.data;
         // handle error here

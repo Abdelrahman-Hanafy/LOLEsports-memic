@@ -2,29 +2,23 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './Style/Navbar.css'
 
-const Navbarfun = ({loggedUser,setloggedUser}) => {
+const Navbarfun = () => {
     var logo = require('../assets/image.png');
     
     const handleOnLogout = (event) => {
-        window.sessionStorage.setItem('isLoggedIn',false);
         window.sessionStorage.setItem('loggedUser','');
         window.sessionStorage.setItem('loggedUserStay',false);
-        setloggedUser('');
+        window.sessionStorage.setItem('userToken','');
+
         window.location.reload();
     };
 
     const logged = [];
-    if(window.sessionStorage.getItem('isLoggedIn') === 'true' && window.sessionStorage.getItem('loggedUserStay') === 'true' ){
-        logged.push(
-            <React.Fragment key={1}>
-                <Link to=''> HI, {window.sessionStorage.getItem('loggedUser')}</Link>
-                <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
-            </React.Fragment>
-        )
-    }else if(loggedUser !== ''){
+    if((window.sessionStorage.getItem('loggedUser')??'') !== '' ){
+
         logged.push(
             <React.Fragment key={2}>
-                <Link to=''> HI, {loggedUser}</Link>
+                <Link to=''> HI, {window.sessionStorage.getItem('loggedUser')}</Link>
                 <button className="btn btn-outline-danger " onClick={handleOnLogout} type="button">Logout</button>
             </React.Fragment>
         )
@@ -51,7 +45,7 @@ const Navbarfun = ({loggedUser,setloggedUser}) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav  mr-auto">
-            <li className="nav-item active">
+                <li className="nav-item active">
                     <Link className="nav-link" to='/'>
                         Home
                     </Link>

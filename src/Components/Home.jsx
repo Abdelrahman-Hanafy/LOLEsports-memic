@@ -9,9 +9,16 @@ const Home = () => {
 
   useEffect(() => {
     fetch('https://localhost:7091/api/News',{
-    })
+      headers:{
+          Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                  'Authorization': "Bearer " + window.sessionStorage.getItem('userToken'),
+      },
+      }
+    )
     .then(response => response.json())
     .then(json => setContent(json))
+
     }, []);
 
 

@@ -15,7 +15,7 @@ import AddSchedule from "./Components/AddSchedule";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
-  const [loggedUser, setloggedUser] = useState("");
+  // const [loggedUser, setloggedUser] = useState("");
   const [leagueSelected, setLeagueSelected] = useState("");
 
   useEffect(() => {
@@ -30,10 +30,12 @@ const App = () => {
         <Loading />
       ) : (
         <>
-          <Navbar loggedUser={loggedUser} setloggedUser={setloggedUser} />
+          {/* <Navbar loggedUser={loggedUser} setloggedUser={setloggedUser} /> */}
+          <Navbar />
           <div className="container ">
             <Routes>
               <Route path="/" element={<Home />}></Route>
+
               <Route
                 path="/schedule"
                 element={
@@ -43,6 +45,8 @@ const App = () => {
                   />
                 }
               ></Route>
+              <Route path="/AddMatch" element={<AddSchedule />}></Route>
+
               <Route
                 path="/standings"
                 element={
@@ -52,13 +56,15 @@ const App = () => {
                   />
                 }
               ></Route>
+
               <Route path="/rewards" element={<Rewards />}></Route>
+
               <Route
                 path="/login"
-                element={<Login setloggedUser={setloggedUser} />}
+                // element={<Login setloggedUser={setloggedUser} />}
+                element={<Login />}
               ></Route>
               <Route path="/signup" element={<Signup />}></Route>
-              <Route path="/AddMatch" element={<AddSchedule />}></Route>
             </Routes>
           </div>
         </>
