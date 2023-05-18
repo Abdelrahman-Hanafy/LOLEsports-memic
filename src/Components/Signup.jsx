@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Style/form.css'
 import { useNavigate } from 'react-router-dom';
-
+import {post} from './APIMiddleware'
 
 const Signup = () => {
 
@@ -57,15 +57,8 @@ const Signup = () => {
                 "password": pass,
                 "email":mail
             };
-                // Send data to the backend via POST
-            fetch('https://localhost:7091/api/Users', {  // Enter your IP address here
-                method: 'POST', 
-                mode: 'cors', 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData) // body data type must match "Content-Type" header
-            })
+            // Send data to the backend via POST
+            post("Users",userData);
             hist('/login');
             return true
         }else{

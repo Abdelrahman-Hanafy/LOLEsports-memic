@@ -5,8 +5,7 @@ import './Style/filter.css'
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
-import axios from 'axios';
+import {get} from './APIMiddleware'
 
     const SideFliter = ({setLeagueSelected}) => {
 
@@ -14,13 +13,8 @@ import axios from 'axios';
 
     useEffect(() => {
 
-    const fetchLeagues = async ()=>{
-        const res = await axios.get('https://localhost:7091/api/leagues',{})
-        const resData = await res.data
-        setLeagues(resData)
-    }        
-        
-    fetchLeagues();
+        get("leagues").then(res => setLeagues(res))
+
     }, []);
 
     const handleOnSelectLeague = (val) => {

@@ -2,23 +2,15 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './Style/Home.css'
 import { useState } from 'react'
+import {get} from './APIMiddleware'
 
 const Home = () => {
 
   const [homeContent,setContent] = useState([]);
 
   useEffect(() => {
-    fetch('https://localhost:7091/api/News',{
-      headers:{
-          Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                  'Authorization': "Bearer " + window.sessionStorage.getItem('userToken'),
-      },
-      }
-    )
-    .then(response => response.json())
-    .then(json => setContent(json))
-
+    get("News").then(res => setContent(res))
+    
     }, []);
 
 

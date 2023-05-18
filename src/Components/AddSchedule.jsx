@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Style/form.css'
-// import {matches, leagues} from './constant'
 import { useNavigate } from 'react-router-dom';
-
-// TODO: post api/leagues/matches?league=id to add match to dataBase
+import {get, authPost} from './APIMiddleware'
 
 const AddSchedule = () => {
   const [dateValue, setDate] = useState(new Date());
@@ -16,19 +14,13 @@ const AddSchedule = () => {
 
   const hist = useNavigate();
   useEffect(() => {
-    fetch('https://localhost:7091/api/leagues',{
-    })
-    .then(response => response.json())
-    .then(json => setLeagueOptions(json))
-    }, []);
+    get("leagues").then(res => setLeagueOptions(res))
+  }, []);
 
   useEffect(()=>{
-    console.log("change")
     if (League !== '')
-      fetch(`https://localhost:7091/api/leagues/teams?league=${League}`,{
-      })
-      .then(response => response.json())
-      .then(json => SetSideOptions(json)).catch(e => console.log(e))
+      get(`leagues/teams?league=${League}`).then(res => SetSideOptions(res))
+  
   },[League])
 
   const handleDateChange = (date) => {
@@ -55,8 +47,6 @@ const AddSchedule = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Do something with the form data
-    //const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    //const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const datetime = new Date(dateValue);
     const match = {
       time: datetime,
@@ -68,10 +58,7 @@ const AddSchedule = () => {
       "blueVote": 0,
       "redScore": 0,
       "redVote": 0
-      //'weekday' : weekdays[datetime.getDay()],
-      //'monthday' : `${datetime.getDate()} ${months[datetime.getMonth()]}`,
-      //'hour' : datetime.getHours().toString(10).padStart(2, '0'),
-      //'minute' : datetime.getMinutes().toString(10).padStart(2, '0')
+
     }
     
     if(match['redID'] === match['blueID']){
@@ -85,16 +72,8 @@ const AddSchedule = () => {
       }
     }
 
-    console.log(match)
-    // matches.push(match);
-    fetch('https://localhost:7091/api/Matches', {  // Enter your IP address here
-    method: 'POST', 
-    mode: 'cors', 
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(match) // body data type must match "Content-Type" header
-    })
+    // console.log(match)
+    authPost("Matches",match,window.sessionStorage.getItem("userToken"))
 
     hist('/schedule')
     return true;

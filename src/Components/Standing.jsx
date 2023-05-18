@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import SideFliter from "./SideFliter";
 import './Style/standing.css'
 import { Link } from 'react-router-dom';
+import {get} from './APIMiddleware'
 
 const Standing = ({leagueSelected, setLeagueSelected}) => {
 
@@ -10,11 +11,8 @@ const Standing = ({leagueSelected, setLeagueSelected}) => {
 
   useEffect(()=>{
     if (leagueSelected !== '')
-      fetch(`https://localhost:7091/api/leagues/teams?league=${leagueSelected}`,{
-      })
-      .then(response => response.json())
-      .then(json => setLeagueTeams(json))
-      .catch(e => console.log(e))
+      get(`leagues/teams?league=${leagueSelected}`).then(res => setLeagueTeams(res))
+
   },[leagueSelected])
 
   if(leagueSelected !==''){
