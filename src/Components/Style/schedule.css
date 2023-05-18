@@ -153,5 +153,11 @@
     .EventMatch .league {
         text-align: left;
     }
+
+    .withSide{
+        width: 100vw;
+        margin-left: 0;
+    }
+    
     
 }
